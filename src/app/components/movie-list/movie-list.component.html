@@ -1,0 +1,32 @@
+
+<div class="grid-container">
+        <div class="grid-item"></div>
+        <div class="grid-container-in">
+            <div class="grid-item grid-header">
+                <h5>Filters</h5>
+                <p>Title
+                    <input type="text" name="movieTitle" [(ngModel)]="this.title" 
+                    (keyup)="this.filterMoviesByTitleYear(this.title, this.year)" class="filterInput">
+                    
+                    Release Year
+                    <input type="text" name="movieYear" [(ngModel)]="this.year" 
+                    (keyup)="this.filterMoviesByTitleYear(this.title, this.year)" class="filterInput">
+                </p>
+            </div>
+            <div class="grid-item" *ngFor="let movie of filteredMovies" >
+                <ul>
+                    <li>
+                    {{movie?.title}}
+                    <input class="details-button" [routerLink]="['/movies', movie.id]" 
+                    value="Details" type="button">
+                    <br/>
+                    <span class="subtitle">Release Date: {{ movie?.release_date }} &nbsp;
+                    Budget: {{ movie?.budget | budget }} &nbsp;
+                    Duration: {{ movie?.duration |duration }} &nbsp;
+                    </span>                    
+                    </li>
+                </ul>
+             </div>
+        </div>
+        <div class="grid-item"></div>
+</div>

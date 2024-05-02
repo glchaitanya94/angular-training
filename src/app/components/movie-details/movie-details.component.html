@@ -1,0 +1,57 @@
+
+<div class="grid-container">
+    <div class="grid-item"></div>
+    <div class="grid-container-in">
+        <div class="grid-item">
+                <div class="grid-item">
+                <button [routerLink]="['/movies']" class="btn details-button">
+                    <span class="icon-home"></span>Back
+                </button>                
+                </div>
+                <div class="grid-item">
+                    <h2>{{movieDetails?.title}}</h2>
+                </div>
+                <div class="grid-item">
+                    <table class="table-noborder">
+                        <tr>
+                            <td style="flex-grow: 2">
+                                <input type="image" src="{{movieDetails?.poster}}" alt="Submit"
+                                height="auto" width="180px">
+                            </td>
+                            <td style="flex-grow: 8">
+                                <strong>Summary:</strong> {{movieDetails?.summary}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="grid-item">
+                <h4 class="details">Details</h4>
+                </div>
+                <div class="grid-item">
+                    <table class="detailsTable">
+                        <tr>
+                            <td class="detailsCol">Box office</td>
+                            <td class="detailsCol2" colspan="2">{{movieDetails?.box_office | budget}}</td>
+                        </tr>
+                        <tr>
+                            <td class="detailsCol">Budget</td>
+                            <td class="detailsCol2">{{movieDetails?.budget | budget}}</td>
+                        </tr>
+                        <tr>
+                            <td class="detailsCol">Duration</td>
+                            <td class="detailsCol2">{{movieDetails?.duration | duration}}</td>
+                        </tr>
+                        <tr>
+                            <td class="detailsCol">Producers</td>
+                            <td class="detailsCol2">{{movieDetails?.producers?.join(', ')}}</td>
+                        </tr>
+                        <tr>
+                            <td class="detailsCol">Cinematographers</td>
+                            <td class="detailsCol2">{{movieDetails?.cinematographers?.join(', ')}}</td>
+                        </tr>
+                    </table>
+                </div>
+        </div>
+    </div>
+    <div class="grid-item"></div>
+</div>

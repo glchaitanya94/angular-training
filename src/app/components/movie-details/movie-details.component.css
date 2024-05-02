@@ -1,0 +1,68 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    background: #fff;
+    grid-template-columns: 20% 60% 20%; /*Make the grid smaller than the container*/
+  }
+
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+  }
+
+  .grid-container-in {
+    display: grid;
+    grid-template-columns: auto;
+    padding: 10px;
+  }
+
+  span.icon-home {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='gray' stroke='%23fdfdfd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'%3E%3C/path%3E%3Cpolyline points='9 22 9 12 15 12 15 22'%3E%3C/polyline%3E%3C/svg%3E")
+}
+
+  .details-button{
+  background-color: #f2f2f2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  color: gray;
+}
+
+  table td{
+    background: #fff;
+    color: gray;
+  }
+
+  .details{
+    text-align: center;    
+  }
+
+table.table-noborder td{
+    border-top: none;
+}
+
+table th td{
+    border-top: none;
+    border: 0.01px solid #f2f2f2;
+}
+
+  .detailsTable{
+    padding: 0px;
+    box-shadow: 1px 1px #f2f2f2; 
+  }
+
+  .detailsCol{
+    text-align: right;
+    font-weight: bold;
+    border-right: 0.1px solid black;
+    background: #f2f2f2 !important;
+    color: black;
+    flex-grow: 2;
+    box-shadow: 1px 1px #f2f2f2;
+  }
+
+  .detailsCol2{
+    text-align: left;
+    flex-grow: 8;
+  }
