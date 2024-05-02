@@ -66,11 +66,13 @@ export class MovieListComponent {
   }
 
   getMovieList(){
-    this.http.get('/movies').pipe()
-    .subscribe((data: any) => {
-    console.log(data);
-    this.movies = data;
-    this.filteredMovies = data;
+    this.http.get<Movie[]>('/movies').pipe()
+    .subscribe({
+      next: (data) => {
+      console.log(data);
+      this.movies = data;
+      this.filteredMovies = data;
+        },
     });
   }
 }

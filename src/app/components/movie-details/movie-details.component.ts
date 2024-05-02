@@ -21,21 +21,23 @@ export class MovieDetailsComponent {
     }
 
   heroesUrl:string = '/movies';
-  movieDetails: MovieDetails | undefined;
+  movieDetails: MovieDetails[] = [];
   movieId:string = '';
 
   ngOnInit(){
     console.log("inside ng oninit")
     this.movieId = this.route.snapshot.paramMap.get('id') || '';
     console.log("movie id is ", this.movieId);
-    this.getMovieDetailsList(this.movieId)
+    this.getMovieDetailsList(this.movieId);
   }
 
   getMovieDetailsList(movieId: string){
-    this.http.get(this.heroesUrl + '/' +movieId).pipe()
-    .subscribe((data: any) => {
+    return this.http.get<MovieDetails[]>(this.heroesUrl + '/' +movieId).pipe()
+    .subscribe({
+      next: (data) => {
     console.log(data);
     this.movieDetails = data;
+      },
     });
   }
 }
