@@ -1,5 +1,5 @@
 
-<div class="grid-container">
+<div class="grid-container" *ngIf="movies">
         <div class="grid-item"></div>
         <div class="grid-container-in">
             <div class="grid-item grid-header">
@@ -16,13 +16,13 @@
             <div class="grid-item" *ngFor="let movie of filteredMovies" >
                 <ul>
                     <li>
-                    {{movie?.title}}
+                    {{movie.title}}
                     <input class="details-button" [routerLink]="['/movies', movie.id]" 
                     value="Details" type="button">
                     <br/>
-                    <span class="subtitle">Release Date: {{ movie?.release_date }} &nbsp;
-                    Budget: {{ movie?.budget | budget }} &nbsp;
-                    Duration: {{ movie?.duration |duration }} &nbsp;
+                    <span class="subtitle">Release Date: {{ movie.release_date }} &nbsp;
+                    Budget: {{ movie.budget | budget }} &nbsp;
+                    Duration: {{ movie.duration |duration }} &nbsp;
                     </span>                    
                     </li>
                 </ul>

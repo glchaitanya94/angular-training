@@ -1,31 +1,35 @@
 import { Component } from '@angular/core';
-import {NgFor} from '@angular/common';
+import {NgFor, NgIf} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
 import { BudgetPipe } from '../../pipes/budget.pipe';
 import { DurationPipe } from '../../pipes/duration.pipe';
 import { RouterLink } from '@angular/router';
+import { Movie } from '../../model/movie';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [NgFor, FormsModule, BudgetPipe, DurationPipe, RouterLink],
+  imports: [NgFor, NgIf, FormsModule, BudgetPipe, DurationPipe, RouterLink],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css'
 })
+
 export class MovieListComponent {
-  constructor(
-    private http: HttpClient,
-    ){
-    }
+  constructor(private MovieService: MovieService){}
 
   ngOnInit(){
-    this.getMovieList(); 
+    this.MovieService.getMovieList()
+      .subscribe(data => {
+      this.movies = data
+      this.filteredMovies = data
+    })
   }
 
   heroesUrl:string = '/movies';
-  movies: Movie[] = [];
+  movies:Movie[] = [];
   filteredMovies: Movie[] = [];
   title:string = '';
   year:string = '';
@@ -62,25 +66,5 @@ export class MovieListComponent {
           }
         }
       }
-
   }
-
-  getMovieList(){
-    this.http.get<Movie[]>('/movies').pipe()
-    .subscribe({
-      next: (data) => {
-      console.log(data);
-      this.movies = data;
-      this.filteredMovies = data;
-        },
-    });
-  }
-}
-
-export interface Movie{
-    id: string;
-    title: string;
-    duration: string;
-    budget: string;
-    release_date: string;
 }
